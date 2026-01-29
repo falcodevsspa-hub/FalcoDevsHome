@@ -20,30 +20,35 @@ const routes = [
   "/seguridad",
 ];
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  server: {
-    host: "::",
-    port: 8080,
-  },
-  plugins: [
-    react(),
-    mode === "development" && componentTagger(),
-    Sitemap({
-      hostname: "https://falcodevs.pro",
-      dynamicRoutes: routes,
-    }),
-    prerender({
-      routes,
-      renderer: new Renderer({
-        renderAfterTime: 1000,
-      }),
-      staticDir: path.join(__dirname, "dist"),
-    }),
-  ].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
+export default defineConfig(({ mode }) => {
+  const isVercel = process.env.VERCEL === "1";
+  const shouldPrerender = mode !== "development" && !isVercel; // 👈 NO prerender en Vercel
+
+  return {
+    server: {
+      host: "::",
+      port: 8080,
     },
-  },
-}));
+    plugins: [
+      react(),
+      mode === "development" && componentTagger(),
+      Sitemap({
+        hostname: "https://falcodevs.pro",
+        dynamicRoutes: routes,
+      }),
+      shouldPrerender &&
+        prerender({
+          routes,
+          renderer: new Renderer({
+            renderAfterTime: 1000,
+          }),
+          staticDir: path.join(__dirname, "dist"),
+        }),
+    ].filter(Boolean),
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
+  };
+});
