@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* definicion del diseño del sistema de colores */
+@layer base {
+  :root {
+    /* 🌞 MODO CLARO - MÁS LUZ Y PROFESIONAL */
+    --background: 0 0% 100%;
+    /* Blanco puro */
+    --foreground: 222 47% 11%;
+    /* casi negro azulado */
+
+    --card: 210 40% 99%;
+    /* Casi blanco con un toque de azul */
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* 💠 Primario: Vibrante y profesional */
+    --primary: 199 89% 48%;
+    /* Un azul celeste más vivo */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secundario: Gris azulado profesional */
+    --secondary: 215 25% 27%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted gris suave y limpio */
+    --muted: 210 20% 97%;
+    --muted-foreground: 215 15% 40%;
+
+    /* 🌈 Acento: Oro/Ambar para detalles premium o Azul profundo */
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+
+    --ring: 199 89% 48%;
+
+    --radius: 1rem;
+    /* Bordes más redondeados para modernidad */
+
+    /* Gradiente hero con luz */
+    --gradient-hero: linear-gradient(135deg,
+        hsl(210 40% 98%),
+        hsl(199 89% 98%));
+
+    --gradient-section: linear-gradient(180deg,
+        hsl(0 0% 100%),
+        hsl(210 40% 98%));
+
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --shadow-strong: 0 10px 40px rgba(0, 0, 0, 0.1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Sidebar en modo claro */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 199 89% 48%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    /* slate casi negro, elegante */
+    --foreground: 215 20% 92%;
+    /* gris claro suave (no blanco) */
+
+    --card: 222 47% 10%;
+    --card-foreground: 215 20% 92%;
+
+    --popover: 222 47% 10%;
+    --popover-foreground: 215 20% 92%;
+
+    /* 💠 Primario teal profundo (NO celeste) */
+    --primary: 188 85% 45%;
+    --primary-foreground: 215 20% 96%;
+
+    /* Gris grafito para elementos secundarios */
+    --secondary: 222 25% 16%;
+    --secondary-foreground: 215 20% 90%;
+
+    /* Muted gris elegante */
+    --muted: 222 25% 14%;
+    --muted-foreground: 215 15% 65%;
+
+    /* Acento púrpura suave (para detalles premium) */
+    --accent: 262 70% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 215 20% 96%;
+
+    --border: 222 25% 20%;
+    --input: 222 25% 20%;
+    --ring: 188 85% 45%;
+    /* teal profundo */
+
+    /* 🌌 Gradiente hero elegante (sin celeste) */
+    --gradient-hero: linear-gradient(135deg,
+        hsl(222 47% 6%),
+        hsl(210 40% 12%));
+
+    --gradient-section: linear-gradient(180deg,
+        hsl(222 47% 6%),
+        hsl(222 47% 10%));
+
+    /* Sombras profesionales */
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.45);
+    --shadow-strong: 0 20px 65px rgba(0, 0, 0, 0.65);
+
+    /* Sidebar */
+    --sidebar-background: 222 47% 7%;
+    --sidebar-foreground: 215 20% 92%;
+    --sidebar-primary: 188 85% 45%;
+    --sidebar-primary-foreground: 0 0% 96%;
+    --sidebar-accent: 222 25% 14%;
+    --sidebar-accent-foreground: 215 20% 92%;
+    --sidebar-border: 222 25% 18%;
+    --sidebar-ring: 188 85% 45%;
+  }
+
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    @apply bg-background text-foreground antialiased;
+  }
+}
