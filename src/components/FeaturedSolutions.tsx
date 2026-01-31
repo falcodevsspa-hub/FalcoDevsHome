@@ -19,7 +19,7 @@ const products = [
     {
         title: "LandingExpress",
         description: "Despliegue de sucursales digitales de alta conversión en tiempo récord.",
-        href: "https://landingexpressfd.vercel.app/",
+        href: "https://express.falcodevs.pro/",
         logo: "/logoLE_transparent.png",
         color: "from-accent/10 to-transparent"
     }
