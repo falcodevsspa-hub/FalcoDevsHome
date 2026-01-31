@@ -12,7 +12,7 @@ const products = [
     {
         title: "Digital Agents",
         description: "Fuerza laboral autónoma basada en IA para ejecutar tareas complejas 24/7.",
-        href: "https://falco-digital-agent.vercel.app/",
+        href: "https://agents.falcodevs.pro/",
         logo: "/logoFDA_transparent.png",
         color: "from-primary/10 to-transparent"
     },
