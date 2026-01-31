@@ -5,7 +5,7 @@ const products = [
     {
         title: "Flow Monitor",
         description: "Control industrial y monitoreo de procesos en tiempo real con dashboards avanzados.",
-        href: "https://flowmonitor-falcodevs.vercel.app/",
+        href: "https://fluxmonitor.falcodevs.pro/",
         logo: "/fm-logo-grande.png",
         color: "from-blue-500/10 to-transparent"
     },
