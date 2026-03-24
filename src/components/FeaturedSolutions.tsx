@@ -3,7 +3,7 @@ import { ExternalLink, ArrowUpRight } from "lucide-react";
 
 const products = [
     {
-        title: "Flow Monitor",
+        title: "Flux Monitor",
         description: "Control industrial y monitoreo de procesos en tiempo real con dashboards avanzados.",
         href: "https://fluxmonitor.falcodevs.pro/",
         logo: "/fm-logo-grande.png",
