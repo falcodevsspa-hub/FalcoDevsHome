@@ -13,7 +13,6 @@ const routes = [
   "/servicios/integraciones-empresariales",
   "/servicios/software-a-medida",
   "/nosotros",
-  "/casos",
   "/diagnostico",
   "/contacto",
   "/politica-privacidad",

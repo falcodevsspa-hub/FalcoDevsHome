@@ -13,7 +13,6 @@ import AgentesIA from "./pages/servicios/AgentesIA";
 import Integraciones from "./pages/servicios/Integraciones";
 import SoftwareMedida from "./pages/servicios/SoftwareMedida";
 import Nosotros from "./pages/Nosotros";
-import Casos from "./pages/Casos";
 import Diagnostico from "./pages/Diagnostico";
 import Contacto from "./pages/Contacto";
 import Privacidad from "./pages/Privacidad";
@@ -39,7 +38,6 @@ const App = () => (
 
             {/* TRANSVERSALES */}
             <Route path="/nosotros" element={<Nosotros />} />
-            <Route path="/casos" element={<Casos />} />
             <Route path="/diagnostico" element={<Diagnostico />} />
             <Route path="/contacto" element={<Contacto />} />
 

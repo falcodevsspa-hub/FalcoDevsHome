@@ -27,7 +27,7 @@ const products = [
 
 const FeaturedSolutions = () => {
     return (
-        <section className="py-24 bg-muted/20 border-t border-border">
+        <section id="soluciones" className="py-24 bg-muted/20 border-t border-border">
             <div className="container mx-auto px-4">
                 <div className="max-w-4xl mx-auto text-center mb-16 space-y-4">
                     <p className="text-sm uppercase tracking-[0.3em] text-primary font-bold">Ecosistema FalcoDevs</p>

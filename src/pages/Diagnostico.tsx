@@ -10,15 +10,97 @@ import { toast } from "sonner";
 import { Send, CheckCircle2 } from "lucide-react";
 import { trackConversion } from "@/utils/analytics";
 
+const WHATSAPP_NUMBER = "56927444800";
+
+type FormData = {
+    name: string;
+    company: string;
+    whatsapp: string;
+    email: string;
+    problem: string;
+    urgency: string;
+    message: string;
+};
+
+const problemLabels: Record<string, string> = {
+    manual: "Mucho trabajo manual / repetitivo",
+    data: "Datos dispersos / falta de visibilidad",
+    software: "Necesito un software que no existe",
+    ia: "Quiero aplicar IA pero no se como",
+    other: "Otro",
+};
+
+const urgencyLabels: Record<string, string> = {
+    high: "Critica (Necesito para ayer)",
+    medium: "Media (Proximas semanas)",
+    low: "Baja (Explorando opciones)",
+};
+
 const Diagnostico = () => {
     const [submitted, setSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [formData, setFormData] = useState<FormData>({
+        name: "",
+        company: "",
+        whatsapp: "",
+        email: "",
+        problem: "",
+        urgency: "",
+        message: "",
+    });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const openWhatsApp = () => {
+        const whatsappMessage = `Nuevo diagnostico tecnologico solicitado\n\nNombre: ${formData.name}\nEmpresa: ${formData.company || "No indicado"}\nWhatsApp: ${formData.whatsapp}\nEmail: ${formData.email}\nProblema principal: ${problemLabels[formData.problem] || formData.problem}\nUrgencia: ${urgencyLabels[formData.urgency] || formData.urgency}\nComentarios: ${formData.message || "Sin comentarios"}`;
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+        window.open(url, "_blank", "noopener,noreferrer");
+    };
+
+    const validateRequiredFields = () => {
+        if (!formData.name.trim() || !formData.whatsapp.trim() || !formData.email.trim() || !formData.problem || !formData.urgency) {
+            toast.error("Completa los campos obligatorios para enviar la solicitud.");
+            return false;
+        }
+        return true;
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!validateRequiredFields()) return;
+
+        setIsLoading(true);
         trackConversion("form_submit", "diagnostico");
-        // Simulate submission
-        toast.success("Solicitud enviada correctamente.");
-        setSubmitted(true);
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    company: formData.company,
+                    whatsapp: formData.whatsapp,
+                    email: formData.email,
+                    problem: problemLabels[formData.problem] || formData.problem,
+                    urgency: urgencyLabels[formData.urgency] || formData.urgency,
+                    message: formData.message,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error("No se pudo enviar el correo de diagnostico.");
+            }
+
+            toast.success("Solicitud enviada correctamente. Te contactaremos pronto.");
+            openWhatsApp();
+            setSubmitted(true);
+        } catch (error) {
+            const message = error instanceof Error ? error.message : "Error al enviar el correo de diagnostico.";
+            toast.error(`${message} Puedes continuar por WhatsApp.`);
+            openWhatsApp();
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     if (submitted) {
@@ -84,28 +166,56 @@ const Diagnostico = () => {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="space-y-2">
                                         <Label htmlFor="name">Nombre Completo</Label>
-                                        <Input id="name" placeholder="Ej. Juan Pérez" required />
+                                        <Input
+                                            id="name"
+                                            placeholder="Ej. Juan Perez"
+                                            required
+                                            value={formData.name}
+                                            onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
+                                        />
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="company">Empresa</Label>
-                                        <Input id="company" placeholder="Ej. Logística SPA" required />
+                                        <Input
+                                            id="company"
+                                            placeholder="Ej. Logistica SPA"
+                                            value={formData.company}
+                                            onChange={(e) => setFormData((prev) => ({ ...prev, company: e.target.value }))}
+                                        />
                                     </div>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="space-y-2">
                                         <Label htmlFor="whatsapp">WhatsApp / Celular</Label>
-                                        <Input id="whatsapp" placeholder="+56 9 1234 5678" required />
+                                        <Input
+                                            id="whatsapp"
+                                            placeholder="+56 9 1234 5678"
+                                            required
+                                            value={formData.whatsapp}
+                                            onChange={(e) => setFormData((prev) => ({ ...prev, whatsapp: e.target.value }))}
+                                        />
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="email">Email Corporativo</Label>
-                                        <Input id="email" type="email" placeholder="juan@empresa.cl" required />
+                                        <Input
+                                            id="email"
+                                            type="email"
+                                            placeholder="juan@empresa.cl"
+                                            required
+                                            value={formData.email}
+                                            onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+                                        />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
                                     <Label htmlFor="problem">¿Cuál es el principal problema hoy?</Label>
-                                    <Select required>
+                                    <Select
+                                        required
+                                        value={formData.problem}
+                                        onValueChange={(value) => setFormData((prev) => ({ ...prev, problem: value }))}
+                                    >
                                         <SelectTrigger>
                                             <SelectValue placeholder="Selecciona una opción" />
                                         </SelectTrigger>
@@ -121,7 +231,11 @@ const Diagnostico = () => {
 
                                 <div className="space-y-2">
                                     <Label htmlFor="urgency">Urgencia</Label>
-                                    <Select required>
+                                    <Select
+                                        required
+                                        value={formData.urgency}
+                                        onValueChange={(value) => setFormData((prev) => ({ ...prev, urgency: value }))}
+                                    >
                                         <SelectTrigger>
                                             <SelectValue placeholder="Selecciona el nivel de urgencia" />
                                         </SelectTrigger>
@@ -135,11 +249,17 @@ const Diagnostico = () => {
 
                                 <div className="space-y-2">
                                     <Label htmlFor="message">Comentarios adicionales</Label>
-                                    <Textarea id="message" placeholder="Cuéntanos brevemente sobre tu desafío..." className="min-h-[100px]" />
+                                    <Textarea
+                                        id="message"
+                                        placeholder="Cuentanos brevemente sobre tu desafio..."
+                                        className="min-h-[100px]"
+                                        value={formData.message}
+                                        onChange={(e) => setFormData((prev) => ({ ...prev, message: e.target.value }))}
+                                    />
                                 </div>
 
-                                <Button type="submit" className="w-full h-12 text-lg rounded-full">
-                                    Enviar Solicitud <Send className="ml-2 h-4 w-4" />
+                                <Button type="submit" className="w-full h-12 text-lg rounded-full" disabled={isLoading}>
+                                    {isLoading ? "Enviando solicitud..." : "Enviar Solicitud"} <Send className="ml-2 h-4 w-4" />
                                 </Button>
                                 <p className="text-center text-xs text-muted-foreground pt-2">
                                     Al enviar, aceptas nuestra política de privacidad y tratamiento de datos.

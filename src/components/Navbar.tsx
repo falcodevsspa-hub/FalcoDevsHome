@@ -22,13 +22,22 @@ const services = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
+  const isDark = theme === "dark";
 
   useEffect(() => {
     const handleResize = () => setIsOpen(false);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const isHome = location.pathname === "/";
@@ -44,7 +53,17 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/90 backdrop-blur-xl shadow-sm">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${isScrolled ? "scrolled" : ""} ${
+        isDark
+          ? isScrolled
+            ? "border-cyan-300/20 bg-[rgba(10,15,30,0.75)] backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.4)]"
+            : "border-cyan-200/10 bg-[rgba(10,15,30,0.6)] backdrop-blur-xl"
+          : isScrolled
+            ? "border-[rgba(0,0,0,0.05)] bg-white backdrop-blur-[8px] shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
+            : "border-[rgba(0,0,0,0.05)] bg-[rgba(255,255,255,0.95)] backdrop-blur-[8px]"
+      }`}
+    >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
 
@@ -67,12 +86,12 @@ const Navbar = () => {
 
           {/* DESKTOP NAV */}
           <div className="hidden md:flex items-center space-x-8 text-sm font-medium">
-            <Link to="/" className="text-foreground transition-colors hover:text-primary">
+            <Link to="/" className={`${isDark ? "text-foreground/90" : "text-slate-900"} transition-all duration-300 hover:text-cyan-500 ${isDark ? "hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.45)]" : ""}`}>
               Inicio
             </Link>
 
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-foreground transition-colors hover:text-primary outline-none">
+              <DropdownMenuTrigger className={`flex items-center gap-1 ${isDark ? "text-foreground/90" : "text-slate-900"} transition-all duration-300 hover:text-cyan-500 ${isDark ? "hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.45)]" : ""} outline-none`}>
                 Soluciones <ChevronDown className="h-4 w-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-56">
@@ -86,19 +105,19 @@ const Navbar = () => {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Link to="/nosotros" className="text-foreground transition-colors hover:text-primary">
+            <Link to="/nosotros" className={`${isDark ? "text-foreground/90" : "text-slate-900"} transition-all duration-300 hover:text-cyan-500 ${isDark ? "hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.45)]" : ""}`}>
               Nosotros
-            </Link>
-
-            <Link to="/casos" className="text-foreground transition-colors hover:text-primary">
-              Casos
             </Link>
 
             <Button
               asChild
               variant="default"
               size="sm"
-              className="rounded-full px-5"
+              className={`rounded-full px-5 border transition-all duration-300 hover:scale-[1.03] ${
+                isDark
+                  ? "border-cyan-300/40 bg-cyan-500/90 text-slate-950 shadow-[0_0_24px_rgba(34,211,238,0.35)] hover:shadow-[0_0_34px_rgba(34,211,238,0.55)]"
+                  : "border-cyan-600/30 bg-cyan-500 text-white shadow-[0_8px_18px_rgba(6,182,212,0.28)] hover:bg-cyan-600 hover:shadow-[0_10px_24px_rgba(6,182,212,0.35)]"
+              }`}
               onClick={() => trackConversion("navbar_cta_click")}
             >
               <Link to="/diagnostico">Solicitar Diagnóstico</Link>
@@ -177,14 +196,6 @@ const Navbar = () => {
               className="block w-full text-left rounded-lg border border-border bg-card px-4 py-3 text-foreground"
             >
               Nosotros
-            </Link>
-
-            <Link
-              to="/casos"
-              onClick={() => setIsOpen(false)}
-              className="block w-full text-left rounded-lg border border-border bg-card px-4 py-3 text-foreground"
-            >
-              Casos
             </Link>
 
             <Link
