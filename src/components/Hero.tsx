@@ -128,59 +128,20 @@ const Hero = () => {
 
               <div className="mt-5 rounded-2xl border border-cyan-200/15 bg-[#030914] p-4 font-mono text-sm text-emerald-200/90">
   <div className="terminal-line">
-    <span className="text-cyan-300">&gt;</span> Recibiendo datos desde operación
+    <span className="text-cyan-300">&gt;</span> Entendemos cómo funciona tu negocio
     <span className="terminal-dots" />
   </div>
 
   <div className="terminal-line terminal-line-delay-1">
-    <span className="text-cyan-300">&gt;</span> Aplicando validaciones automáticas
+    <span className="text-cyan-300">&gt;</span> Identificando tareas que puedes automatizar
     <span className="terminal-dots" />
   </div>
 
   <div className="terminal-line terminal-line-delay-2">
-    <span className="text-cyan-300">&gt;</span> Generando resumen para el equipo
+    <span className="text-cyan-300">&gt;</span>  Integramos soluciones que ahorran tiempo y reducen errores
     <span className="terminal-dots" />
   </div>
 </div>
-
-              <div className="mt-5 rounded-2xl border border-cyan-200/15 bg-slate-900/60 p-4">
-                <div className="mb-3 flex items-center justify-between">
-                  <p className="text-sm font-medium text-slate-200">Estado del sistema</p>
-                  <p className="text-xs text-cyan-200">Sincronizado</p>
-                </div>
-
-                <div className="space-y-3">
-                  <div>
-                    <div className="mb-1 flex justify-between text-xs text-slate-400">
-                      <span>Lectura de datos</span>
-                      <span>Completa</span>
-                    </div>
-                    <div className="h-2 rounded-full bg-slate-800">
-                      <div className="h-2 w-full rounded-full bg-cyan-300/80" />
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="mb-1 flex justify-between text-xs text-slate-400">
-                      <span>Validación</span>
-                      <span>En curso</span>
-                    </div>
-                    <div className="h-2 rounded-full bg-slate-800">
-                      <div className="h-2 w-3/4 rounded-full bg-cyan-300/80" />
-                    </div>
-                  </div>
-
-                  <div>
-                    <div className="mb-1 flex justify-between text-xs text-slate-400">
-                      <span>Reporte</span>
-                      <span>Preparando</span>
-                    </div>
-                    <div className="h-2 rounded-full bg-slate-800">
-                      <div className="h-2 w-1/2 rounded-full bg-cyan-300/80" />
-                    </div>
-                  </div>
-                </div>
-              </div>
 
               <div className="hero-scan pointer-events-none absolute inset-x-10 top-24 h-[1px] bg-gradient-to-r from-transparent via-cyan-200/70 to-transparent" />
             </div>
