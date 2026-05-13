@@ -79,8 +79,11 @@ const Hero = () => {
             </p>
           </div>
 
-          <div className="hero-fade-up relative lg:-mt-10 xl:-mt-14" style={{ animationDelay: "0.25s" }}>
-            <div className="absolute -inset-6 rounded-[2.5rem] bg-cyan-400/10 blur-3xl" />
+          <div
+            className="hero-fade-up relative hidden lg:block lg:-mt-10 xl:-mt-14"
+            style={{ animationDelay: "0.25s" }}
+          >
+              <div className="absolute -inset-6 rounded-[2.5rem] bg-cyan-400/10 blur-3xl" />
 
               <div className="relative p-2">
                 <div className="mb-5 flex items-center justify-between border-b border-cyan-200/15 pb-9">
