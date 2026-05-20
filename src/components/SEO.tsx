@@ -17,7 +17,7 @@ const SEO = ({
     ogImage = "/logoHome.png",
     keywords
 }: SEOProps) => {
-    const siteName = "FalcoDevs";
+    const siteName = "Janos";
     const fullTitle = `${title} | ${siteName}`;
 
     return (

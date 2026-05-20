@@ -1,31 +1,16 @@
 import { useEffect, useState } from "react";
-import { Menu, Moon, Sun, X, ChevronDown } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/useTheme";
-import { Link, useLocation } from "react-router-dom";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Link } from "react-router-dom";
 import { trackConversion } from "@/utils/analytics";
 
 const falcodevsLogo = "/logoHome.png";
-
-const services = [
-  { title: "Automatización de Procesos", href: "/servicios/automatizacion-procesos" },
-  { title: "Agentes IA & Operaciones", href: "/servicios/agentes-ia-operaciones" },
-  { title: "Integraciones Empresariales", href: "/servicios/integraciones-empresariales" },
-  { title: "Software a Medida", href: "/servicios/software-a-medida" },
-];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme } = useTheme();
-  const location = useLocation();
-  const isDark = theme === "dark";
 
   useEffect(() => {
     const handleResize = () => setIsOpen(false);
@@ -34,180 +19,134 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => setIsScrolled(window.scrollY > 12);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isHome = location.pathname === "/";
-
-  const handleNavClick = (id: string) => {
-    if (isHome) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-    setIsOpen(false);
-  };
+  const navItems = [
+  { label: "Productos", href: "#soluciones" },
+  { label: "Contacto", href: "#contacto" },
+];
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${isScrolled ? "scrolled" : ""} ${
-        isDark
-          ? isScrolled
-            ? "border-cyan-300/20 bg-[rgba(10,15,30,0.75)] backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.4)]"
-            : "border-cyan-200/10 bg-[rgba(10,15,30,0.6)] backdrop-blur-xl"
-          : isScrolled
-            ? "border-[rgba(0,0,0,0.05)] bg-white backdrop-blur-[8px] shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
-            : "border-[rgba(0,0,0,0.05)] bg-[rgba(255,255,255,0.95)] backdrop-blur-[8px]"
+      className={`fixed left-0 right-0 top-0 z-50 border-b transition-all duration-300 ${
+        isScrolled
+          ? "border-slate-200 bg-white/90 backdrop-blur-md dark:border-white/10 dark:bg-[#07101f]/85"
+          : "border-transparent bg-white/70 backdrop-blur-md dark:bg-[#07101f]/70"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:px-10">
+        {/* Logo */}
+        <Link
+          to="/"
+          onClick={() => {
+            setIsOpen(false);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="flex items-center gap-3"
+        >
+          <img
+            src={falcodevsLogo}
+            alt="FalcoDevs"
+            className="h-9 w-9 object-contain"
+          />
 
-          {/* BRAND */}
-          <Link
-            to="/"
-            className="flex items-center gap-3 group"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          <span className="text-xl font-black tracking-[-0.04em] text-[#07101f] dark:text-white">
+            FalcoDevs
+          </span>
+        </Link>
+
+        {/* Desktop */}
+        <div className="hidden items-center gap-8 md:flex">
+          <div className="flex items-center gap-7 text-sm font-medium text-[#07101f]/70 dark:text-white/70">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="transition-colors hover:text-cyan-300"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          <Button
+            asChild
+            className="rounded-full bg-cyan-300 px-6 text-sm font-semibold text-[#07101f] shadow-none transition hover:scale-[1.03] hover:bg-cyan-200"
+            onClick={() => trackConversion("navbar_cta_click")}
           >
-            <img
-              src={falcodevsLogo}
-              alt="FalcoDevs"
-              className="h-9 w-9 md:h-10 md:w-10 object-contain drop-shadow-[0_0_10px_rgba(0,200,255,0.45)] transition-transform group-hover:scale-105"
-            />
-            <span className="text-xl md:text-2xl font-semibold tracking-tight">
-              <span className="text-foreground">Falco</span>
-              <span className="text-primary">Devs</span>
-            </span>
-          </Link>
+            <Link to="/diagnostico">Hablemos</Link>
+          </Button>
 
-          {/* DESKTOP NAV */}
-          <div className="hidden md:flex items-center space-x-8 text-sm font-medium">
-            <Link to="/" className={`${isDark ? "text-foreground/90" : "text-slate-900"} transition-all duration-300 hover:text-cyan-500 ${isDark ? "hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.45)]" : ""}`}>
-              Inicio
-            </Link>
-
-            <DropdownMenu>
-              <DropdownMenuTrigger className={`flex items-center gap-1 ${isDark ? "text-foreground/90" : "text-slate-900"} transition-all duration-300 hover:text-cyan-500 ${isDark ? "hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.45)]" : ""} outline-none`}>
-                Soluciones <ChevronDown className="h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-56">
-                {services.map((service) => (
-                  <DropdownMenuItem key={service.href} asChild>
-                    <Link to={service.href} className="w-full cursor-pointer">
-                      {service.title}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <Link to="/nosotros" className={`${isDark ? "text-foreground/90" : "text-slate-900"} transition-all duration-300 hover:text-cyan-500 ${isDark ? "hover:drop-shadow-[0_0_10px_rgba(34,211,238,0.45)]" : ""}`}>
-              Nosotros
-            </Link>
-
-            <Button
-              asChild
-              variant="default"
-              size="sm"
-              className={`rounded-full px-5 border transition-all duration-300 hover:scale-[1.03] ${
-                isDark
-                  ? "border-cyan-300/40 bg-cyan-500/90 text-slate-950 shadow-[0_0_24px_rgba(34,211,238,0.35)] hover:shadow-[0_0_34px_rgba(34,211,238,0.55)]"
-                  : "border-cyan-600/30 bg-cyan-500 text-white shadow-[0_8px_18px_rgba(6,182,212,0.28)] hover:bg-cyan-600 hover:shadow-[0_10px_24px_rgba(6,182,212,0.35)]"
-              }`}
-              onClick={() => trackConversion("navbar_cta_click")}
-            >
-              <Link to="/diagnostico">Solicitar Diagnóstico</Link>
-            </Button>
-
-            {/* THEME SWITCHER */}
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label="Cambiar tema"
-              onClick={toggleTheme}
-              className="rounded-full border border-border/60 bg-card hover:border-primary/50"
-            >
-              {theme === "dark" ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </Button>
-          </div>
-
-          {/* MOBILE NAV BUTTON */}
-          <div className="flex items-center gap-3 md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label="Cambiar tema"
-              onClick={toggleTheme}
-              className="rounded-full border border-border/60 bg-card hover:border-primary/50"
-            >
-              {theme === "dark" ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </Button>
-
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-foreground transition-colors hover:text-primary"
-              aria-label="Abrir menú"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="Cambiar tema"
+            onClick={toggleTheme}
+            className="rounded-full text-[#07101f]/70 hover:bg-cyan-300/15 hover:text-[#07101f] dark:text-white/70 dark:hover:text-white"
+          >
+            {theme === "dark" ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+          </Button>
         </div>
 
-        {/* MOBILE MENU */}
-        {isOpen && (
-          <div className="md:hidden pb-6 space-y-2 animate-in slide-in-from-top-2">
-            <Link
-              to="/"
-              onClick={() => setIsOpen(false)}
-              className="block w-full text-left rounded-lg border border-border bg-card px-4 py-3 text-foreground"
-            >
-              Inicio
-            </Link>
+        {/* Mobile */}
+        <div className="flex items-center gap-2 md:hidden">
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="Cambiar tema"
+            onClick={toggleTheme}
+            className="rounded-full text-[#07101f]/70 hover:bg-cyan-300/15 dark:text-white/70"
+          >
+            {theme === "dark" ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+          </Button>
 
-            <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-              Soluciones
-            </div>
-            {services.map((service) => (
-              <Link
-                key={service.href}
-                to={service.href}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="rounded-full p-2 text-[#07101f] transition hover:bg-cyan-300/15 dark:text-white"
+            aria-label="Abrir menú"
+          >
+            {isOpen ? <X size={23} /> : <Menu size={23} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="border-t border-slate-200 bg-white px-6 pb-6 pt-3 dark:border-white/10 dark:bg-[#07101f] md:hidden">
+          <div className="flex flex-col gap-2">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="block w-full text-left rounded-lg border border-border bg-card px-4 py-3 text-foreground ml-2"
+                className="rounded-2xl px-4 py-3 text-base font-medium text-[#07101f]/80 transition hover:bg-cyan-300/15 dark:text-white/80"
               >
-                {service.title}
-              </Link>
+                {item.label}
+              </a>
             ))}
-
-            <Link
-              to="/nosotros"
-              onClick={() => setIsOpen(false)}
-              className="block w-full text-left rounded-lg border border-border bg-card px-4 py-3 text-foreground"
-            >
-              Nosotros
-            </Link>
 
             <Link
               to="/diagnostico"
               onClick={() => setIsOpen(false)}
-              className="block w-full text-left rounded-lg bg-primary px-4 py-3 text-primary-foreground font-semibold text-center"
+              className="mt-2 rounded-full bg-cyan-300 px-5 py-3 text-center text-base font-semibold text-[#07101f]"
             >
-              Solicitar Diagnóstico
+              Hablemos
             </Link>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 };
