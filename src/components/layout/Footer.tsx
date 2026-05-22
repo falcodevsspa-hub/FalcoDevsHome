@@ -22,7 +22,7 @@ const Footer = () => {
               Aceleramos negocios mediante la automatización inteligente y el desarrollo de software de alto impacto.
             </p>
             <div className="text-sm space-y-1">
-              <p>falcodevsspa@gmail.com</p>
+              <p>contacto@falcodevs.cl</p>
               <p>+56 9 2744 4800</p>
               <p>Chile (Ñuble / Santiago)</p>
             </div>
@@ -44,7 +44,7 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Compañía</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><Link to="/nosotros" className="hover:text-primary transition-colors">Sobre Nosotros</Link></li>
-              <li><Link to="/diagnostico" className="hover:text-primary transition-colors">Diagnóstico Gratuito</Link></li>
+              <li><a href="#contacto" className="hover:text-primary transition-colors">Hablemos</a></li>
               <li><Link to="/contacto" className="hover:text-primary transition-colors">Contacto</Link></li>
             </ul>
           </div>

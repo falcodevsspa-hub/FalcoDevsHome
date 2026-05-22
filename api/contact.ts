@@ -8,7 +8,7 @@ type Payload = {
   message?: string;
 };
 
-const TO_EMAIL = "falcodevsspa@gmail.com";
+const TO_EMAIL = "contacto@falcodevs.cl";
 
 export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {

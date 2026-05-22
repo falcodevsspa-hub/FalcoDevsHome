@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { MessageCircle, Mail, Phone, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, Send } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -32,7 +32,6 @@ const Contact = () => {
     setIsSubmitting(true);
     setFeedback(null);
 
-    // ⬇️ Leer y validar variables de entorno
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
@@ -45,10 +44,10 @@ const Contact = () => {
       });
       setFeedback({
         type: "error",
-        message: "Falta configurar el servicio de correo. Intenta más tarde.",
+        message: "Falta configurar el servicio de correo. Intenta mas tarde.",
       });
       toast({
-        title: "Error de configuración",
+        title: "Error de configuracion",
         description: "Faltan datos de EmailJS en las variables de entorno.",
         variant: "destructive",
       });
@@ -91,14 +90,14 @@ const Contact = () => {
       });
       setFormData({ name: "", email: "", phone: "", empresa: "", message: "" });
     } catch (error) {
-      console.error("❌ Error al enviar el mensaje:", error);
+      console.error("Error al enviar el mensaje:", error);
       setFeedback({
         type: "error",
         message: "Hubo un problema al enviar tu mensaje. Intenta nuevamente.",
       });
       toast({
         title: "Error al enviar",
-        description: "Revisa los datos o intenta más tarde.",
+        description: "Revisa los datos o intenta mas tarde.",
         variant: "destructive",
       });
     } finally {
@@ -107,57 +106,77 @@ const Contact = () => {
   };
 
   return (
-    <section id="contacto" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-14 space-y-3">
-          <p className="text-sm uppercase tracking-[0.3em] text-primary">Contacto</p>
-          <h2 className="text-4xl md:text-5xl font-semibold">Conversemos sobre tu proyecto</h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Cuéntanos lo que necesitas y diseñaremos la mejor forma de potenciar tu presencia digital.
+    <section id="contacto" className="border-t border-white/[0.07] bg-[#07101f] py-24">
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
+        <div className="mb-12">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/[0.08] px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-cyan-300">
+            <MessageCircle className="h-3.5 w-3.5" />
+            Hablemos
+          </div>
+          <h2 className="max-w-[16ch] font-['Manrope'] text-[2.8rem] font-semibold leading-[0.92] tracking-[-0.065em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            ¿Listo para construir algo que funcione?
+          </h2>
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-[rgba(255,255,255,0.45)] md:text-lg">
+            Cuéntanos en qué estás y armamos una propuesta clara para partir rápido, con fechas y responsables.
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <div className="space-y-6 rounded-2xl border border-border bg-card/60 p-8 shadow-soft backdrop-blur-sm">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div className="space-y-6">
             <div className="flex items-start gap-4">
-              <Mail className="w-6 h-6 text-primary" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-[14px] border border-white/10 text-cyan-300">
+                <Mail className="h-5 w-5" />
+              </div>
               <div>
-                <h3 className="font-semibold text-lg">Email</h3>
-                <a
-                  href="mailto:falcodevsspa@gmail.com"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  falcodevsspa@gmail.com
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[rgba(255,255,255,0.45)]">Email</p>
+                <a href="mailto:contacto@falcodevs.cl" className="mt-1 block text-white transition hover:text-cyan-300">
+                  contacto@falcodevs.cl
                 </a>
               </div>
             </div>
+
             <div className="flex items-start gap-4">
-              <Phone className="w-6 h-6 text-primary" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-[14px] border border-white/10 text-cyan-300">
+                <Phone className="h-5 w-5" />
+              </div>
               <div>
-                <h3 className="font-semibold text-lg">Teléfono</h3>
-                <a
-                  href="tel:+56927444800"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-[rgba(255,255,255,0.45)]">Teléfono</p>
+                <a href="tel:+56927444800" className="mt-1 block text-white transition hover:text-cyan-300">
                   +56 9 2744 4800
                 </a>
               </div>
             </div>
-            <div className="rounded-xl border border-border/80 bg-muted/30 p-4 text-sm text-muted-foreground">
-              Respuesta en menos de 24 horas hábiles. Trabajamos con equipos ágiles y trato directo con quienes implementan.
-            </div>
+
+            <Button
+              asChild
+              variant="outline"
+              className="h-12 rounded-full border-cyan-300/60 bg-transparent px-6 font-semibold text-cyan-300 hover:border-cyan-300 hover:bg-cyan-300/10 hover:text-cyan-200"
+            >
+              <a
+                href="https://wa.me/56927444800?text=Hola%2C+quiero+saber+más+sobre+FalcoDevs"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Escribir por WhatsApp
+              </a>
+            </Button>
+
+            <p className="font-mono text-[11px] text-[rgba(255,255,255,0.45)]">
+              Respondemos en menos de 24 horas hábiles.
+            </p>
           </div>
 
           <form
             onSubmit={handleSubmit}
-            className="space-y-5 rounded-2xl border border-border bg-card/60 p-8 shadow-soft backdrop-blur-sm"
+            className="space-y-5 rounded-[2rem] border border-white/[0.08] bg-[rgba(255,255,255,0.04)] p-8"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <Input
                 placeholder="Nombre *"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
+                className="border-white/10 bg-transparent text-white placeholder:text-white/30 focus:border-cyan-300/60"
               />
               <Input
                 type="email"
@@ -165,19 +184,22 @@ const Contact = () => {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
+                className="border-white/10 bg-transparent text-white placeholder:text-white/30 focus:border-cyan-300/60"
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <Input
                 type="tel"
                 placeholder="Teléfono"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                className="border-white/10 bg-transparent text-white placeholder:text-white/30 focus:border-cyan-300/60"
               />
               <Input
                 placeholder="Empresa"
                 value={formData.empresa}
                 onChange={(e) => setFormData({ ...formData, empresa: e.target.value })}
+                className="border-white/10 bg-transparent text-white placeholder:text-white/30 focus:border-cyan-300/60"
               />
             </div>
             <Textarea
@@ -186,8 +208,13 @@ const Contact = () => {
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               rows={6}
               required
+              className="border-white/10 bg-transparent text-white placeholder:text-white/30 focus:border-cyan-300/60"
             />
-            <Button type="submit" className="w-full h-12 text-base" disabled={isSubmitting}>
+            <Button
+              type="submit"
+              className="h-12 w-full rounded-full bg-cyan-300 font-black text-[#07101f] hover:bg-cyan-200"
+              disabled={isSubmitting}
+            >
               {isSubmitting ? (
                 "Enviando..."
               ) : (
@@ -197,18 +224,18 @@ const Contact = () => {
                 </span>
               )}
             </Button>
+
             {feedback && (
               <div
-                className={`rounded-lg border px-4 py-3 text-sm ${
+                className={`rounded-[14px] border px-4 py-3 text-sm ${
                   feedback.type === "success"
-                    ? "border-green-500/40 bg-green-500/10 text-green-200 md:text-green-700 dark:text-green-100"
-                    : "border-destructive/40 bg-destructive/10 text-destructive"
+                    ? "border-green-400/10 bg-green-400/10 text-green-200"
+                    : "border-red-400/10 bg-red-400/10 text-red-200"
                 }`}
               >
                 {feedback.message}
               </div>
             )}
-            <p className="text-sm text-muted-foreground">WhatsApp: +56 9 2744 4800</p>
           </form>
         </div>
       </div>
@@ -217,4 +244,3 @@ const Contact = () => {
 };
 
 export default Contact;
-

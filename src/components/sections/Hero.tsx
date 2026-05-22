@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import { ArrowDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { trackConversion } from "@/utils/analytics";
+import { ArrowUpRight } from "lucide-react";
 
 const typingWords = [
   "Pymes reales.",
@@ -49,7 +49,10 @@ const Hero = () => {
   }, [charIndex, isHolding, wordIndex]);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#f7f9fb] text-[#07101f] transition-colors duration-500 dark:bg-[#07101f] dark:text-white">
+    <section
+      id="inicio"
+      className="relative min-h-screen overflow-hidden bg-[#f7f9fb] text-[#20162F] transition-colors duration-500 dark:bg-[#07101f] dark:text-white"
+    >
       <main className="mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 pb-20 pt-32 md:px-10 md:pt-36">
         <div className="max-w-6xl">
           <h1 className="max-w-5xl font-['Manrope'] text-5xl font-medium leading-[0.95] tracking-[-0.065em] text-[#20162F] dark:text-white sm:text-7xl md:text-7xl lg:text-8xl">
@@ -74,24 +77,27 @@ const Hero = () => {
   />
 </div>
 
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#07101f]/70 dark:text-white/70 md:text-xl">
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[rgba(7,16,31,0.55)] dark:text-[rgba(255,255,255,0.45)] md:text-xl">
             Diseñamos soluciones digitales simples, rápidas y útiles para
             empresas que necesitan ordenar procesos, vender mejor o automatizar
             tareas.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Link
-              to="/diagnostico"
+            <a
+              href="#contacto"
               onClick={() => trackConversion("hero_cta_click")}
-              className="rounded-full bg-[#07101f] px-8 py-4 text-base font-semibold text-white transition hover:bg-cyan-300 hover:text-[#07101f] dark:bg-cyan-300 dark:text-[#07101f] dark:hover:bg-white"
+              className="group inline-flex items-center gap-3 rounded-full bg-[#07101f] px-7 py-4 text-base font-semibold text-white shadow-[0_0_35px_rgba(34,211,238,0.22)] ring-1 ring-cyan-300/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#0b1730] hover:shadow-[0_0_45px_rgba(34,211,238,0.38)]"
             >
-              Solicitar diagnóstico
-            </Link>
+  <span>Solicitar diagnostico</span>
+  <span className="flex h-8 w-8 items-center justify-center rounded-[14px] bg-cyan-300 text-[#07101f] transition-transform duration-300 group-hover:translate-x-1">
+    <ArrowUpRight className="h-4 w-4" />
+  </span>
+</a>
 
             <a
-              href="#servicios"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-[#07101f]/65 transition hover:text-cyan-400 dark:text-white/65 dark:hover:text-cyan-300"
+              href="#soluciones"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[rgba(7,16,31,0.55)] transition hover:text-cyan-400 dark:text-[rgba(255,255,255,0.45)] dark:hover:text-cyan-300"
             >
               Ver servicios
               <ArrowDown className="h-4 w-4" />
@@ -99,20 +105,16 @@ const Hero = () => {
           </div>
         </div>
       </main>
-      <style>
-  <style>
-  {`
-    @keyframes slowBlink {
-      0%, 45% {
-        opacity: 1;
-      }
-      46%, 100% {
-        opacity: 0.2;
-      }
-    }
-  `}
-</style>
-</style>
+      <style>{`
+        @keyframes slowBlink {
+          0%, 45% {
+            opacity: 1;
+          }
+          46%, 100% {
+            opacity: 0.2;
+          }
+        }
+      `}</style>
     </section>
   );
 };

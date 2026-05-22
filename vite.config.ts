@@ -8,15 +8,6 @@ import Renderer from "@prerenderer/renderer-puppeteer";
 
 const routes = [
   "/",
-  "/servicios/automatizacion-procesos",
-  "/servicios/agentes-ia-operaciones",
-  "/servicios/integraciones-empresariales",
-  "/servicios/software-a-medida",
-  "/nosotros",
-  "/diagnostico",
-  "/contacto",
-  "/politica-privacidad",
-  "/seguridad",
 ];
 
 export default defineConfig(({ mode }) => {
