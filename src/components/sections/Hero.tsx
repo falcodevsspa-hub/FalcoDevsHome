@@ -53,7 +53,7 @@ const Hero = () => {
       id="inicio"
       className="relative min-h-screen overflow-hidden bg-[#f7f9fb] text-[#20162F] transition-colors duration-500 dark:bg-[#07101f] dark:text-white"
     >
-      <main className="mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 pb-20 pt-32 md:px-10 md:pt-36">
+      <main className="mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col justify-center px-6 pb-10 md:px-10 mt-20">
         <div className="max-w-6xl">
           <h1 className="max-w-5xl font-['Manrope'] text-5xl font-medium leading-[0.95] tracking-[-0.065em] text-[#20162F] dark:text-white sm:text-7xl md:text-7xl lg:text-8xl">
   Software a medida para:

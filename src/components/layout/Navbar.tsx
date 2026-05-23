@@ -26,7 +26,6 @@ const Navbar = () => {
 
   const navItems = [
     { label: "Productos", href: "#soluciones" },
-    { label: "Nosotros", href: "#nosotros" },
     { label: "Contacto", href: "#contacto" },
   ];
 
@@ -77,7 +76,6 @@ const Navbar = () => {
             asChild
             className="rounded-full bg-cyan-300 px-6 text-sm font-semibold text-[#07101f] shadow-none transition hover:scale-[1.03] hover:bg-cyan-200"
           >
-            <a href="#contacto">Hablemos</a>
           </Button>
 
           <Button
@@ -141,7 +139,6 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
               className="mt-2 rounded-full bg-cyan-300 px-5 py-3 text-center text-base font-semibold text-[#07101f]"
             >
-              Hablemos
             </a>
           </div>
         </div>
