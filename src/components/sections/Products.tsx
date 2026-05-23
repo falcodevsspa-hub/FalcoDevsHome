@@ -253,6 +253,118 @@ function ProductRow({ item }: { item: (typeof products)[number] }) {
   );
 }
 
+function ProductCardMobile({ item }: { item: (typeof products)[number] }) {
+  const [expanded, setExpanded] = useState(false);
+  const [imgError, setImgError] = useState(false);
+  const { Icon } = item;
+
+  return (
+    <article
+      className={`rounded-2xl border border-slate-200/80 bg-white/80 p-4 backdrop-blur-sm transition-colors dark:border-white/[0.08] dark:bg-white/[0.02] ${
+        item.available ? "" : "opacity-75"
+      }`}
+    >
+      <div className="flex items-start gap-3">
+        <span className="pt-1 font-mono text-[10px] tracking-[0.22em] text-slate-400 dark:text-white/30 shrink-0">
+          {item.id}
+        </span>
+
+        <div className="h-11 w-11 shrink-0 rounded-xl flex items-center justify-center bg-white dark:bg-white/[0.04] border border-slate-200/70 dark:border-white/[0.08]">
+          {!imgError ? (
+            <img
+              src={item.logo}
+              alt={item.title}
+              className={`h-8 w-8 object-contain ${
+                !item.available ? "opacity-60 grayscale" : ""
+              }`}
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            <Icon
+              className={`h-5 w-5 ${
+                item.available
+                  ? "text-cyan-500 dark:text-cyan-300"
+                  : "text-slate-400 dark:text-white/30"
+              }`}
+            />
+          )}
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <div className="mb-2 flex items-center justify-between gap-2">
+            <span
+              className={`text-[10px] font-black uppercase tracking-[0.18em] px-2.5 py-1 rounded-full ${
+                item.available
+                  ? "bg-cyan-300 text-[#07101f]"
+                  : "bg-slate-100 text-slate-500 dark:bg-white/[0.08] dark:text-white/50"
+              }`}
+            >
+              {item.status}
+            </span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.18em] text-slate-400 dark:text-white/30">
+              {item.tag}
+            </span>
+          </div>
+
+          <h3
+            className={`font-['Manrope'] text-xl leading-tight tracking-[-0.03em] ${
+              item.available ? "text-[#20162F] dark:text-white" : "text-[#20162F]/70 dark:text-white/70"
+            }`}
+          >
+            {item.title}
+          </h3>
+        </div>
+      </div>
+
+      <div className="mt-4 flex items-center justify-between gap-3">
+        <button
+          type="button"
+          onClick={() => setExpanded((prev) => !prev)}
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-slate-300/70 text-slate-500 transition-transform duration-300 dark:border-white/[0.2] dark:text-white/70"
+          aria-expanded={expanded}
+          aria-label={expanded ? "Cerrar detalle" : "Ver detalle"}
+        >
+          <ArrowUpRight
+            className={`h-4 w-4 transition-transform duration-300 ${
+              expanded ? "rotate-45" : "rotate-0"
+            }`}
+          />
+        </button>
+
+        {item.available ? (
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-cyan-300 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-[#07101f]"
+          >
+            Abrir
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+        ) : (
+          <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-slate-500 dark:border-white/[0.1] dark:text-white/45">
+            <Clock className="h-3.5 w-3.5" />
+            Pronto
+          </div>
+        )}
+      </div>
+
+      <div
+        style={{
+          maxHeight: expanded ? 160 : 0,
+          opacity: expanded ? 1 : 0,
+          overflow: "hidden",
+          transition: `max-height ${LIQUID}, opacity 0.3s ease`,
+        }}
+      >
+        <p className="pt-3 text-sm leading-relaxed text-[#07101f]/65 dark:text-white/55">
+          {item.description}
+        </p>
+      </div>
+    </article>
+  );
+}
+
 // ─── Section ──────────────────────────────────────────────────────────────────
 const Products = () => {
   return (
@@ -304,11 +416,20 @@ const Products = () => {
           </p>
         </div>
 
-        {/* ── Product list ── */}
-        <div className="border-t border-slate-200/70 dark:border-white/[0.07]">
+        {/* ── Product list (desktop / tablet) ── */}
+        <div className="hidden md:block border-t border-slate-200/70 dark:border-white/[0.07]">
           {products.map((item) => (
             <ProductRow key={item.id} item={item} />
           ))}
+        </div>
+
+        {/* ── Product cards (mobile) ── */}
+        <div className="block md:hidden border-t border-slate-200/70 dark:border-white/[0.07] px-6 pt-6">
+          <div className="flex flex-col gap-4">
+            {products.map((item) => (
+              <ProductCardMobile key={item.id} item={item} />
+            ))}
+          </div>
         </div>
 
       </div>
