@@ -16,7 +16,7 @@ const LIQUID = "0.55s cubic-bezier(0.25, 1, 0.5, 1)";
 const products = [
   {
     id: "01",
-    title: "Agents",
+    title: "ProAgents",
     description:
       "Agentes de IA para ejecutar tareas operativas, automatizar flujos y reducir trabajo repetitivo.",
     href: "https://agents.falcodevs.cl/",
@@ -28,7 +28,7 @@ const products = [
   },
   {
     id: "02",
-    title: "LandingExpress",
+    title: "WebExpress",
     description:
       "Landing pages rápidas, claras y orientadas a conversión para pymes, servicios y negocios locales.",
     href: "https://express.falcodevs.cl/",
@@ -52,7 +52,7 @@ const products = [
   },
   {
     id: "04",
-    title: "Flux Monitor",
+    title: "FluxMonitor",
     description:
       "Monitoreo industrial y control de procesos en tiempo real para operaciones más visibles y medibles.",
     href: "#",

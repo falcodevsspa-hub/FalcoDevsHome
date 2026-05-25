@@ -113,11 +113,12 @@ const Contact = () => {
             <MessageCircle className="h-3.5 w-3.5" />
             Hablemos
           </div>
-          <h2 className="max-w-[16ch] font-['Manrope'] text-[2.8rem] font-semibold leading-[0.92] tracking-[-0.065em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            ¿Listo para construir algo que funcione?
+          <h2 className="max-w-[18ch] font-['Manrope'] text-[2.8rem] font-semibold leading-[0.95] tracking-[-0.045em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            "¿En qué podemos ayudarte?"
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-[rgba(255,255,255,0.45)] md:text-lg">
-            Cuéntanos en qué estás y armamos una propuesta clara para partir rápido, con fechas y responsables.
+            Cuéntanos tu desafío y te respondemos con una propuesta 
+            concreta: alcance, fechas y costos definidos.
           </p>
         </div>
 

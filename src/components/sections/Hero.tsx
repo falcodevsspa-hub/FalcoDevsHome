@@ -4,7 +4,7 @@ import { trackConversion } from "@/utils/analytics";
 import { ArrowUpRight } from "lucide-react";
 
 const typingWords = [
-  "Pymes reales.",
+  "Pymes reales",
   "Procesos complejos",
   "Equipos que crecen",
   "Negocios locales",
