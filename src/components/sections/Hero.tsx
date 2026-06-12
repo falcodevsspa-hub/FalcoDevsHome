@@ -4,10 +4,10 @@ import { trackConversion } from "@/utils/analytics";
 import { ArrowUpRight } from "lucide-react";
 
 const typingWords = [
-  "Pymes reales",
-  "Procesos complejos",
-  "Equipos que crecen",
-  "Negocios locales",
+  "Empresas con visión digital",
+  "Procesos que exigen precisión",
+  "Equipos preparados para escalar",
+  "Negocios que buscan ventaja",
 ];
 
 const Hero = () => {

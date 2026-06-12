@@ -1,30 +1,640 @@
 <!doctype html>
-<html lang="en">
+<html lang="es" dir="ltr" prefix="og: https://ogp.me/ns# article: https://ogp.me/ns/article#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ingeniería, IA y Automatización</title>
-    <meta name="description" content="Aceleramos la rentabilidad de tu empresa mediante agentes IA, automatización de procesos y software a medida. Ingeniería de alto impacto en Chile." />
-    <meta name="keywords" content="consultoría de IA, automatizaciones n8n, desarrollo web, agentes IA para pymes, integraciones WhatsApp, landing pages escalables" />
-    <meta name="author" content="FalcoDevs" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-    <meta property="og:title" content="FalcoDevs | Desarrollo Web, IA y Automatización" />
-    <meta property="og:description" content="Desarrollamos y automatizamos tu negocio con IA y software a medida." />
+    <!-- ════════════════════════════════════════════════════════════
+         SEO PRIMARIO — Título, descripción y señales de relevancia
+    ════════════════════════════════════════════════════════════ -->
+    <!--
+      TÍTULO: keyword principal al inicio, marca al final, <60 chars.
+      Formato: [Keyword principal] | [Marca] — [Diferenciador]
+    -->
+    <title>Agentes IA y Automatización para Empresas en Chile | FalcoDevs</title>
+
+    <!--
+      DESCRIPCIÓN: responde una pregunta implícita del usuario en <155 chars.
+      Formula: Quién + Qué hace + Para quién + Resultado + CTA implícito.
+    -->
+    <meta name="description" content="FalcoDevs SpA implementa agentes de IA, automatización con n8n y software a medida para empresas en Chile. Reducimos costos operativos y aceleramos ingresos. Basados en Santiago." />
+
+    <!-- Keywords long-tail orientadas a intención de compra (AEO) -->
+    <meta name="keywords" content="agentes IA empresas Chile, automatización procesos n8n Santiago, software a medida pymes Chile, consultoría inteligencia artificial Chile, integración WhatsApp IA empresas, automatización empresarial Santiago, desarrollo software Chile, FalcoDevs SpA" />
+
+    <meta name="author" content="FalcoDevs SpA" />
+    <meta name="copyright" content="FalcoDevs SpA" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow" />
+    <meta name="language" content="es" />
+    <meta name="geo.region" content="CL-RM" />
+    <meta name="geo.placename" content="Santiago, Chile" />
+    <meta name="geo.position" content="-33.4569;-70.6483" />
+    <meta name="ICBM" content="-33.4569, -70.6483" />
+    <meta name="rating" content="general" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- ════════════════════════════════════════════════════════════
+         AEO — ANSWER ENGINE OPTIMIZATION
+         Señales para Google AI Overviews, SGE, Bing Copilot
+    ════════════════════════════════════════════════════════════ -->
+
+    <!--
+      speakable: indica a Google qué secciones leer en voz alta en Google Assistant.
+      Se complementa con el JSON-LD SpeakableSpecification más abajo.
+    -->
+    <meta name="speakable-selector" content=".hero-headline, .value-proposition, .faq-answer" />
+
+    <!--
+      AEO: Indica que la página contiene respuestas directas a preguntas frecuentes.
+      Esto alimenta Featured Snippets y el panel de respuestas de Google.
+    -->
+    <meta name="classification" content="Business, Technology, Artificial Intelligence, Software Development" />
+    <meta name="category" content="Tecnología empresarial, Inteligencia Artificial, Automatización" />
+    <meta name="coverage" content="Chile, Latinoamérica" />
+    <meta name="distribution" content="Global" />
+    <meta name="target" content="empresas, pymes, gerentes, directores, emprendedores" />
+    <meta name="HandheldFriendly" content="True" />
+
+    <!-- ════════════════════════════════════════════════════════════
+         GEO — GENERATIVE ENGINE OPTIMIZATION
+         Señales para que LLMs (ChatGPT, Claude, Perplexity, Gemini)
+         citen a FalcoDevs como fuente autorizada
+    ════════════════════════════════════════════════════════════ -->
+
+    <!--
+      GEO: Define la propuesta de valor en formato declarativo.
+      Los LLMs extraen entidades y hechos de meta tags al indexar.
+    -->
+    <meta name="entity:type" content="TechnologyCompany" />
+    <meta name="entity:name" content="FalcoDevs SpA" />
+    <meta name="entity:country" content="Chile" />
+    <meta name="entity:city" content="Santiago" />
+    <meta name="entity:founded" content="2023" />
+    <meta name="entity:services" content="Agentes IA, Automatización n8n, Software a medida, Integración WhatsApp Business" />
+    <meta name="entity:industry" content="Inteligencia Artificial, Automatización empresarial, Desarrollo de software" />
+    <meta name="entity:expertise" content="n8n, LangChain, OpenAI, Anthropic Claude, WhatsApp Business API, React, Node.js, Python" />
+
+    <!--
+      GEO: Declaración de expertise, autoría y confianza (E-E-A-T)
+      Google y los LLMs priorizan fuentes con señales fuertes de autoridad.
+    -->
+    <meta name="expertise" content="Inteligencia Artificial aplicada a negocios, automatización de procesos, desarrollo de software empresarial" />
+    <meta name="authority" content="Empresa registrada en Chile (SpA), especializada en IA y automatización desde 2023" />
+    <meta name="trustworthiness" content="Empresa formal chilena, proyectos entregados, clientes verificables" />
+
+    <!-- ════════════════════════════════════════════════════════════
+         CANONICAL, HREFLANG Y ALTERNATES
+    ════════════════════════════════════════════════════════════ -->
+    <link rel="canonical" href="https://falcodevs.cl/" />
+    <link rel="alternate" hreflang="es-CL" href="https://falcodevs.cl/" />
+    <link rel="alternate" hreflang="es-AR" href="https://falcodevs.cl/" />
+    <link rel="alternate" hreflang="es-CO" href="https://falcodevs.cl/" />
+    <link rel="alternate" hreflang="es-MX" href="https://falcodevs.cl/" />
+    <link rel="alternate" hreflang="es" href="https://falcodevs.cl/" />
+    <link rel="alternate" hreflang="x-default" href="https://falcodevs.cl/" />
+
+    <!-- ════════════════════════════════════════════════════════════
+         OPEN GRAPH — Facebook, LinkedIn, WhatsApp, Telegram
+    ════════════════════════════════════════════════════════════ -->
+    <meta property="og:site_name" content="FalcoDevs" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://falcodevs.cl" />
+    <meta property="og:url" content="https://falcodevs.cl/" />
+    <meta property="og:title" content="Agentes IA y Automatización para Empresas en Chile | FalcoDevs" />
+    <meta property="og:description" content="Implementamos agentes de inteligencia artificial, automatización de procesos con n8n y software a medida para reducir costos y acelerar ingresos en tu empresa." />
+    <meta property="og:image" content="https://falcodevs.cl/og-image.jpg" />
+    <meta property="og:image:secure_url" content="https://falcodevs.cl/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="FalcoDevs SpA — Agentes IA y Automatización para empresas en Chile" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:locale:alternate" content="es_AR" />
+    <meta property="og:locale:alternate" content="es_MX" />
+    <meta property="og:updated_time" content="2025-06-01T00:00:00+00:00" />
 
+    <!-- ════════════════════════════════════════════════════════════
+         TWITTER / X CARDS
+    ════════════════════════════════════════════════════════════ -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="FalcoDevs | Desarrollo Web, IA y Automatización" />
-    <meta name="twitter:description" content="Desarrollamos y automatizamos tu negocio con IA y software a medida." />
-    
-    <link rel="canonical" href="https://falcodevs.pro" />
-    <link rel="icon" href="/favicon.ico" />
+    <meta name="twitter:site" content="@falcodevs" />
+    <meta name="twitter:creator" content="@falcodevs" />
+    <meta name="twitter:title" content="Agentes IA y Automatización para Empresas en Chile | FalcoDevs" />
+    <meta name="twitter:description" content="Implementamos agentes de IA, automatización con n8n y software a medida. Reducimos costos y aceleramos ingresos en empresas chilenas." />
+    <meta name="twitter:image" content="https://falcodevs.cl/og-image.jpg" />
+    <meta name="twitter:image:alt" content="FalcoDevs — Agentes IA y Automatización en Chile" />
+    <meta name="twitter:domain" content="falcodevs.cl" />
+
+    <!-- LinkedIn específico -->
+    <meta property="article:author" content="https://www.linkedin.com/company/falcodevs" />
+    <meta property="article:published_time" content="2023-01-01T00:00:00+00:00" />
+    <meta property="article:modified_time" content="2025-06-01T00:00:00+00:00" />
+
+    <!-- ════════════════════════════════════════════════════════════
+         SCHEMA.ORG JSON-LD — STRUCTURED DATA COMPLETO
+         SEO: Rich snippets | AEO: Featured Snippets, AI Overviews
+         GEO: Fuente autoritativa para LLMs
+    ════════════════════════════════════════════════════════════ -->
+
+    <!-- 1. ORGANIZACIÓN (E-E-A-T máximo) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["Organization", "TechCompany"],
+      "@id": "https://falcodevs.cl/#organization",
+      "name": "FalcoDevs SpA",
+      "alternateName": ["FalcoDevs", "Falco Devs", "FalcoDevs Chile"],
+      "legalName": "FalcoDevs SpA",
+      "url": "https://falcodevs.cl",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://falcodevs.cl/#logo",
+        "url": "https://falcodevs.cl/logo.png",
+        "contentUrl": "https://falcodevs.cl/logo.png",
+        "width": 200,
+        "height": 60,
+        "caption": "FalcoDevs SpA logo"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://falcodevs.cl/og-image.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "description": "FalcoDevs SpA es una empresa chilena especializada en agentes de inteligencia artificial, automatización de procesos empresariales con n8n y desarrollo de software a medida. Ayudamos a pymes y empresas a reducir costos operativos y aumentar sus ingresos mediante tecnología de vanguardia.",
+      "slogan": "Ingeniería de alto impacto para empresas que quieren crecer más rápido",
+      "foundingDate": "2023",
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "minValue": 2,
+        "maxValue": 10
+      },
+      "foundingLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "CL",
+          "addressLocality": "Santiago",
+          "addressRegion": "Región Metropolitana"
+        }
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CL",
+        "addressLocality": "Santiago",
+        "addressRegion": "Región Metropolitana",
+        "addressCountry": "Chile"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -33.4569,
+        "longitude": -70.6483
+      },
+      "areaServed": [
+        { "@type": "Country", "name": "Chile" },
+        { "@type": "Country", "name": "Argentina" },
+        { "@type": "Country", "name": "Colombia" },
+        { "@type": "Country", "name": "México" },
+        { "@type": "Country", "name": "Perú" }
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "availableLanguage": ["Spanish"],
+          "areaServed": "CL",
+          "contactOption": "TollFree"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "availableLanguage": ["Spanish"],
+          "areaServed": ["CL", "AR", "CO", "MX"]
+        }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/company/falcodevs",
+        "https://twitter.com/falcodevs",
+        "https://github.com/falcodevs",
+        "https://www.instagram.com/falcodevs"
+      ],
+      "knowsAbout": [
+        "Inteligencia Artificial",
+        "Agentes de IA",
+        "Automatización de procesos empresariales",
+        "n8n workflow automation",
+        "Desarrollo de software a medida",
+        "WhatsApp Business API",
+        "LangChain",
+        "OpenAI GPT",
+        "Anthropic Claude",
+        "React",
+        "Node.js",
+        "Python",
+        "Integración de sistemas",
+        "CRM automatizado",
+        "Chatbots empresariales"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de IA y Automatización FalcoDevs",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Agentes de Inteligencia Artificial",
+              "description": "Diseño, desarrollo e implementación de agentes IA personalizados para automatizar atención al cliente, ventas, cobranzas y operaciones internas.",
+              "serviceType": "Artificial Intelligence Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Automatización de Procesos con n8n",
+              "description": "Implementación de flujos de trabajo automatizados usando n8n para conectar CRMs, ERPs, WhatsApp, email, hojas de cálculo y cientos de aplicaciones empresariales.",
+              "serviceType": "Business Process Automation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Desarrollo de Software a Medida",
+              "description": "Desarrollo de aplicaciones web, landing pages de alta conversión y plataformas escalables adaptadas a las necesidades específicas de cada empresa.",
+              "serviceType": "Custom Software Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Integración WhatsApp Business con IA",
+              "description": "Implementación de agentes IA en WhatsApp Business para atención 24/7, calificación de leads y soporte automático al cliente.",
+              "serviceType": "WhatsApp Business Integration"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- 2. WEBPAGE — Identidad de la página para motores -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://falcodevs.cl/#webpage",
+      "url": "https://falcodevs.cl/",
+      "name": "Agentes IA y Automatización para Empresas en Chile | FalcoDevs",
+      "description": "FalcoDevs SpA implementa agentes de IA, automatización con n8n y software a medida para empresas en Chile. Reducimos costos operativos y aceleramos ingresos.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://falcodevs.cl/#website"
+      },
+      "about": {
+        "@id": "https://falcodevs.cl/#organization"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://falcodevs.cl/og-image.jpg"
+      },
+      "datePublished": "2023-01-01T00:00:00+00:00",
+      "dateModified": "2025-06-01T00:00:00+00:00",
+      "inLanguage": "es-CL",
+      "potentialAction": {
+        "@type": "ReadAction",
+        "target": ["https://falcodevs.cl/"]
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".hero-headline", ".value-proposition", ".faq-answer", "h1", "h2"]
+      }
+    }
+    </script>
+
+    <!-- 3. WEBSITE con SearchAction (Sitelinks de Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://falcodevs.cl/#website",
+      "name": "FalcoDevs",
+      "alternateName": "FalcoDevs SpA",
+      "url": "https://falcodevs.cl",
+      "description": "Agentes IA, automatización de procesos con n8n y software a medida para empresas en Chile y Latinoamérica.",
+      "inLanguage": "es-CL",
+      "publisher": {
+        "@id": "https://falcodevs.cl/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://falcodevs.cl/?s={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- 4. FAQ — AEO máximo: Featured Snippets y AI Overviews -->
+    <!--
+      ESTRATEGIA AEO: Las preguntas están redactadas exactamente como
+      los usuarios las escriben en Google. Las respuestas son directas,
+      concisas (40-60 palabras) y factuales. Esto maximiza la captura
+      de Featured Snippets y alimenta las respuestas de AI Overview de Google.
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué es un agente de inteligencia artificial para empresas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un agente de inteligencia artificial para empresas es un sistema autónomo que percibe su entorno, toma decisiones y ejecuta tareas sin intervención humana constante. En el contexto empresarial, automatiza procesos como atención al cliente, calificación de leads, cobranzas y reportes operativos, disponible las 24 horas del día. FalcoDevs diseña e implementa agentes IA personalizados para empresas en Chile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta implementar automatización con n8n en una empresa chilena?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El costo de implementar automatización con n8n en una empresa chilena varía según la complejidad de los procesos. Un flujo de automatización básico (como integrar WhatsApp con un CRM) puede partir desde 500 USD. Proyectos de automatización completa de procesos de ventas o cobranzas típicamente oscilan entre 1.500 y 8.000 USD. FalcoDevs ofrece diagnóstico gratuito para evaluar el ROI esperado."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué procesos empresariales se pueden automatizar con IA en Chile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Con IA se pueden automatizar en empresas chilenas: atención al cliente por WhatsApp o email (24/7), calificación y seguimiento de leads, emisión y seguimiento de facturas, reportes de ventas y operaciones, reclutamiento inicial de candidatos, soporte técnico de primer nivel y gestión de inventario. FalcoDevs diagnostica qué procesos de tu empresa generarían mayor retorno al automatizarse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué es n8n y por qué es mejor que Zapier o Make para empresas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "n8n es una plataforma de automatización de flujos de trabajo open-source que permite conectar cientos de aplicaciones y servicios empresariales. A diferencia de Zapier o Make, n8n puede instalarse en servidores propios (auto-hosted), no cobra por número de ejecuciones y permite lógica condicional compleja. Para empresas con volumen alto de automatizaciones, n8n resulta hasta 10 veces más económico que sus alternativas SaaS."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo integrar WhatsApp Business con inteligencia artificial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para integrar WhatsApp Business con IA se necesita: 1) Una cuenta de WhatsApp Business API (Meta), 2) Un modelo de lenguaje como GPT-4 o Claude configurado con el contexto de tu negocio, 3) Un sistema de orquestación (como n8n) que gestione la lógica conversacional. El resultado es un agente que responde consultas, agenda reuniones y califica clientes automáticamente. FalcoDevs implementa esta integración end-to-end."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tiempo toma implementar un agente IA en una pyme chilena?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Implementar un agente IA básico para una pyme chilena toma entre 2 y 4 semanas. Un agente con integraciones complejas (CRM, ERP, WhatsApp, email) puede tomar entre 4 y 10 semanas. FalcoDevs entrega implementaciones ágiles con revisiones semanales, garantizando que el agente esté operativo y generando valor lo antes posible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué empresas en Chile están usando inteligencia artificial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En Chile, empresas de retail, banca, salud, logística y servicios ya utilizan inteligencia artificial para automatizar procesos. Falabella, Banco de Chile, Copec y startups tecnológicas son ejemplos conocidos. Sin embargo, la mayor oportunidad está en pymes y medianas empresas que aún no han adoptado IA y pueden lograr ventajas competitivas significativas con inversiones moderadas mediante proveedores como FalcoDevs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuál es la diferencia entre automatización de procesos e inteligencia artificial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La automatización de procesos (RPA) ejecuta reglas predefinidas de forma automática, como copiar datos entre sistemas o enviar emails programados. La inteligencia artificial puede comprender lenguaje natural, tomar decisiones contextualizada y aprender de nuevos datos. La combinación más potente para empresas es usar IA para entender y decidir, y automatización (como n8n) para ejecutar las acciones resultantes."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- 5. BREADCRUMB -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://falcodevs.cl/"
+        }
+      ]
+    }
+    </script>
+
+    <!-- 6. LOCAL BUSINESS — Señal geo para búsquedas locales "cerca de mí" -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": "https://falcodevs.cl/#localbusiness",
+      "name": "FalcoDevs SpA",
+      "description": "Empresa de desarrollo de software, agentes IA y automatización de procesos en Santiago de Chile.",
+      "url": "https://falcodevs.cl",
+      "logo": "https://falcodevs.cl/logo.png",
+      "image": "https://falcodevs.cl/og-image.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Santiago",
+        "addressRegion": "Región Metropolitana",
+        "addressCountry": "CL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -33.4569,
+        "longitude": -70.6483
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "19:00"
+        }
+      ],
+      "priceRange": "$$",
+      "currenciesAccepted": "CLP, USD",
+      "paymentAccepted": "Transferencia bancaria, Tarjeta de crédito",
+      "areaServed": ["Santiago", "Chile", "Latinoamérica"],
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": -33.4569,
+          "longitude": -70.6483
+        },
+        "geoRadius": "5000000"
+      }
+    }
+    </script>
+
+    <!-- 7. HOW-TO — AEO: captura rich snippets de proceso paso a paso -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "Cómo implementar un agente IA en tu empresa en Chile",
+      "description": "Proceso paso a paso para implementar agentes de inteligencia artificial en una empresa chilena con FalcoDevs.",
+      "totalTime": "P4W",
+      "estimatedCost": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "1500"
+      },
+      "supply": [
+        { "@type": "HowToSupply", "name": "Acceso a los sistemas actuales de la empresa" },
+        { "@type": "HowToSupply", "name": "Cuenta WhatsApp Business API (si aplica)" },
+        { "@type": "HowToSupply", "name": "Definición de los procesos a automatizar" }
+      ],
+      "tool": [
+        { "@type": "HowToTool", "name": "n8n" },
+        { "@type": "HowToTool", "name": "OpenAI GPT-4 o Anthropic Claude" },
+        { "@type": "HowToTool", "name": "FalcoDevs plataforma de agentes" }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Diagnóstico gratuito",
+          "text": "Identificamos los procesos de tu empresa con mayor potencial de automatización y calculamos el ROI esperado.",
+          "url": "https://falcodevs.cl/#contacto"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Diseño de la solución",
+          "text": "Diseñamos la arquitectura del agente IA o flujo de automatización adaptada a tus sistemas y necesidades específicas.",
+          "url": "https://falcodevs.cl/#servicios"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Desarrollo e integración",
+          "text": "Desarrollamos e integramos el agente con tus plataformas actuales (CRM, ERP, WhatsApp, email) en sprints semanales.",
+          "url": "https://falcodevs.cl/#proceso"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Pruebas y lanzamiento",
+          "text": "Probamos exhaustivamente el sistema con casos reales y lo lanzamos en producción con soporte garantizado.",
+          "url": "https://falcodevs.cl/#proceso"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Monitoreo y mejora continua",
+          "text": "Monitoreamos el rendimiento del agente y realizamos ajustes continuos para maximizar su efectividad y ROI.",
+          "url": "https://falcodevs.cl/#soporte"
+        }
+      ]
+    }
+    </script>
+
+    <!-- 8. KNOWELDGE GRAPH — GEO: Datos estructurados para que los LLMs
+         construyan una ficha de conocimiento precisa sobre FalcoDevs -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "dateCreated": "2023-01-01T00:00:00+00:00",
+      "dateModified": "2025-06-01T00:00:00+00:00",
+      "mainEntity": {
+        "@type": "Organization",
+        "@id": "https://falcodevs.cl/#organization",
+        "name": "FalcoDevs SpA",
+        "description": "FalcoDevs SpA es una empresa tecnológica chilena fundada en 2023 que desarrolla agentes de inteligencia artificial, automatización de procesos empresariales con n8n y software a medida. Su especialidad es acelerar la rentabilidad de empresas en Chile y Latinoamérica mediante soluciones de IA aplicada de alto impacto.",
+        "knowsAbout": [
+          {
+            "@type": "Thing",
+            "name": "Agentes de inteligencia artificial",
+            "description": "Sistemas autónomos de IA que ejecutan tareas empresariales sin intervención humana"
+          },
+          {
+            "@type": "Thing",
+            "name": "n8n",
+            "description": "Plataforma open-source de automatización de flujos de trabajo"
+          },
+          {
+            "@type": "Thing",
+            "name": "WhatsApp Business API",
+            "description": "API oficial de Meta para integrar WhatsApp en sistemas empresariales"
+          },
+          {
+            "@type": "Thing",
+            "name": "LangChain",
+            "description": "Framework para desarrollo de aplicaciones con modelos de lenguaje grandes"
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- ════════════════════════════════════════════════════════════
+         PERFORMANCE — Core Web Vitals y carga rápida
+    ════════════════════════════════════════════════════════════ -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0f0f0f" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Preconnect críticos (reducen LCP) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- DNS Prefetch para reducir latencia de terceros -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://api.anthropic.com" />
+
+    <!-- Fuentes con display=swap para evitar FOUT (mejora CLS) -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- ════════════════════════════════════════════════════════════
+         FAVICONS, PWA Y APPLE
+    ════════════════════════════════════════════════════════════ -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#0f0f0f" />
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="FalcoDevs" />
+    <meta name="application-name" content="FalcoDevs" />
+
+    <!-- ════════════════════════════════════════════════════════════
+         GOOGLE TAG MANAGER
+         Reemplaza GTM-XXXXXXX con tu ID real
+    ════════════════════════════════════════════════════════════ -->
+    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
   </head>
 
   <body>
+    <!-- GTM noscript (debe ir inmediatamente después de <body>) -->
+    <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

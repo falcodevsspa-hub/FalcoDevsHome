@@ -42,10 +42,10 @@ const products = [
     id: "03",
     title: "Agendly",
     description:
-      "Sistema simple de agendamiento online para negocios, profesionales y servicios que viven de reservas.",
+      "Solicita tu DEMO para un sistema simple de agendamiento online para negocios.",
     href: "https://agendly.falcodevs.cl",
     logo: "/logoAgendly.png",
-    status: "Disponible",
+    status: "Próximamente",
     tag: "Reservas Online",
     available: true,
     Icon: Calendar,
@@ -338,7 +338,7 @@ function ProductCardMobile({ item }: { item: (typeof products)[number] }) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-cyan-300 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-[#07101f]"
           >
-            Abrir
+            Visitar
             <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
         ) : (

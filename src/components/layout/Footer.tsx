@@ -70,7 +70,7 @@ const Footer = () => {
                     className="transition-colors hover:text-cyan-400"
                   >
                     contacto@falcodevs.cl
-                  </a>
+                  </a>  
                 </li>
 
                 <li>

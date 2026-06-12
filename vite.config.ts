@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => {
       react(),
       mode === "development" && componentTagger(),
       Sitemap({
-        hostname: "https://falcodevs.pro",
+        hostname: "https://falcodevs.cl",
         dynamicRoutes: routes,
       }),
       shouldPrerender &&

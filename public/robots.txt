@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://falcodevs.pro/sitemap.xml
+Sitemap: https://falcodevs.cl/sitemap.xml
